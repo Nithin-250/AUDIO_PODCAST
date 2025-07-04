@@ -1,25 +1,35 @@
 /* Tailwind layers (keep these at the top) */
+/* Tailwind layers (keep at the top) */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Working Star Wars font import - from cdnfonts.com */
 @import url('https://fonts.cdnfonts.com/css/star-jedi');
 
-.star-wars-font {
-  font-family: 'Star Jedi', sans-serif;
-}
-.floating-title {
-  animation: floatUpDown 3s ease-in-out infinite;
+/* Apply Star Jedi font with Tailwind class */
+.font-starwars {
+  font-family: 'Star Jedi', sans-serif !important;
 }
 
+/* Floating animation */
 @keyframes floatUpDown {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .animate-float-updown {
   animation: floatUpDown 4s ease-in-out infinite;
 }
+
+
 
 /* Star Wars-like page transition animations */
 .fade-enter {
