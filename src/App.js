@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 import logo from "./assets/logo.png";
@@ -10,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 let sentenceQueue = [];
 let currentIndex = 0;
 let currentUtterance = null;
+let stoppedManually = false;
 
 function convertTextToSpeech(text, startFrom = 0, onEndCallback) {
   return new Promise((resolve, reject) => {
@@ -53,6 +53,10 @@ function convertTextToSpeech(text, startFrom = 0, onEndCallback) {
         if (preferredVoice) currentUtterance.voice = preferredVoice;
 
         currentUtterance.onend = () => {
+          if (stoppedManually) {
+            stoppedManually = false;
+            return;
+          }
           currentIndex++;
           speakNext();
         };
@@ -138,7 +142,10 @@ function App() {
   };
 
   const handleStop = () => {
-    if (currentUtterance) currentUtterance.onend = null;
+    if (currentUtterance) {
+      stoppedManually = true;
+      currentUtterance.onend = null;
+    }
     window.speechSynthesis.cancel();
     setPausedIndex(currentIndex);
     setIsSpeaking(false);
