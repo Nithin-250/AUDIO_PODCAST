@@ -3,9 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.cdnfonts.com/css/star-jedi');
-
-
 .star-wars-font {
   font-family: 'Star Jedi', sans-serif;
 }
