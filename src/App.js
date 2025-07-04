@@ -7,70 +7,49 @@ import { useNavigate } from "react-router-dom";
 
 // Global TTS state
 let sentenceQueue = [];
-let currentIndex = 0;
 let currentUtterance = null;
-let stoppedManually = false;
 
-function convertTextToSpeech(text, startFrom = 0, onEndCallback) {
+function convertTextToSpeech(text, startFrom = 0, onProgress, onEnd) {
   return new Promise((resolve, reject) => {
     if (!window.speechSynthesis) {
       reject(new Error("Speech Synthesis not supported"));
       return;
     }
 
-    let voices = [];
-    const loadVoices = () => {
-      voices = window.speechSynthesis.getVoices();
-      if (voices.length > 0) {
-        speakChunks();
-      } else {
-        setTimeout(loadVoices, 100);
+    const voices = window.speechSynthesis.getVoices();
+    sentenceQueue = text.match(/[^.!?]+[.!?]*/g) || [text];
+
+    const speakNext = (index) => {
+      if (index >= sentenceQueue.length) {
+        if (onEnd) onEnd();
+        resolve();
+        return;
       }
-    };
 
-    const speakChunks = () => {
-      sentenceQueue = text.match(/[^.!?]+[.!?]*/g) || [text];
-      currentIndex = startFrom;
+      const sentence = sentenceQueue[index].trim();
+      if (!sentence) {
+        speakNext(index + 1);
+        return;
+      }
 
-      const speakNext = () => {
-        if (currentIndex >= sentenceQueue.length) {
-          if (onEndCallback) onEndCallback();
-          resolve();
-          return;
-        }
+      currentUtterance = new SpeechSynthesisUtterance(sentence);
+      currentUtterance.lang = "en-US";
+      const preferredVoice = voices.find(v => v.name.includes("Google US English")) || voices[0];
+      if (preferredVoice) currentUtterance.voice = preferredVoice;
 
-        const sentence = sentenceQueue[currentIndex].trim();
-        if (!sentence) {
-          currentIndex++;
-          speakNext();
-          return;
-        }
-
-        currentUtterance = new SpeechSynthesisUtterance(sentence);
-        currentUtterance.lang = "en-US";
-
-        const preferredVoice = voices.find(v => v.name.includes("Google US English")) || voices[0];
-        if (preferredVoice) currentUtterance.voice = preferredVoice;
-
-        currentUtterance.onend = () => {
-          if (stoppedManually) {
-            stoppedManually = false;
-            return;
-          }
-          currentIndex++;
-          speakNext();
-        };
-
-        currentUtterance.onerror = (e) => reject(e.error);
-
-        window.speechSynthesis.speak(currentUtterance);
+      currentUtterance.onend = () => {
+        if (window.speechSynthesis.speaking || window.speechSynthesis.pending) return;
+        onProgress(index + 1);
+        speakNext(index + 1);
       };
 
-      speakNext();
+      currentUtterance.onerror = (e) => reject(e.error);
+
+      window.speechSynthesis.speak(currentUtterance);
     };
 
-    window.speechSynthesis.cancel();
-    loadVoices();
+    window.speechSynthesis.cancel(); // Cancel any ongoing speech
+    speakNext(startFrom);
   });
 }
 
@@ -82,8 +61,8 @@ function App() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [pausedIndex, setPausedIndex] = useState(0);
 
-  const speakingRef = useRef(false);
   const navigate = useNavigate();
+  const speakingRef = useRef(false);
 
   const handleGenerate = async () => {
     if (!url.trim()) {
@@ -109,7 +88,7 @@ function App() {
       setIsSpeaking(true);
       speakingRef.current = true;
 
-      await convertTextToSpeech(data.content, 0, () => {
+      await convertTextToSpeech(data.content, 0, setPausedIndex, () => {
         setIsSpeaking(false);
         speakingRef.current = false;
         setPausedIndex(0);
@@ -130,7 +109,7 @@ function App() {
     speakingRef.current = true;
 
     try {
-      await convertTextToSpeech(article.content, pausedIndex, () => {
+      await convertTextToSpeech(article.content, pausedIndex, setPausedIndex, () => {
         setIsSpeaking(false);
         speakingRef.current = false;
         setPausedIndex(0);
@@ -142,18 +121,16 @@ function App() {
   };
 
   const handleStop = () => {
-    if (currentUtterance) {
-      stoppedManually = true;
-      currentUtterance.onend = null;
-    }
+    if (currentUtterance) currentUtterance.onend = null;
     window.speechSynthesis.cancel();
-    setPausedIndex(currentIndex);
     setIsSpeaking(false);
     speakingRef.current = false;
   };
 
   useEffect(() => {
-    return () => window.speechSynthesis.cancel();
+    return () => {
+      window.speechSynthesis.cancel();
+    };
   }, []);
 
   return (
@@ -161,6 +138,7 @@ function App() {
       className="relative min-h-screen flex flex-col justify-center items-center bg-cover bg-center p-8"
       style={{ backgroundImage: `url(${starwarsBg})` }}
     >
+      {/* Floating Darth Vader button */}
       <div className="fixed bottom-4 right-4 z-50">
         <button
           onClick={() => navigate("/darth-vader")}
@@ -170,6 +148,7 @@ function App() {
         </button>
       </div>
 
+      {/* Top navbar */}
       <div className="absolute top-0 left-0 right-0 bg-black bg-opacity-60 flex justify-between items-center px-8 py-4 z-10">
         <div className="flex items-center">
           <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-yellow-400">
@@ -178,15 +157,17 @@ function App() {
         </div>
       </div>
 
-        <h1 className="text-yellow-400 text-4xl md:text-6xl font-starwars text-center animate-float-updown mb-6 drop-shadow-[2px_2px_0_black]">
+      {/* Title */}
+      <h1 className="text-yellow-400 text-4xl md:text-6xl font-starwars text-center animate-float-updown mb-6 drop-shadow-[2px_2px_0_black]">
         Talkify: The Podcast Force Awakens
-        </h1>
+      </h1>
 
-
+      {/* Subtitle */}
       <p className="text-yellow-400 text-2xl md:text-3xl font-starwars text-center drop-shadow-[2px_2px_0_black] mb-12 max-w-2xl">
         Paste a URL below and generate your Star Wars-inspired podcast!
       </p>
 
+      {/* Input and generate button */}
       <div className="flex flex-col sm:flex-row items-center w-full max-w-xl space-y-4 sm:space-y-0 sm:space-x-4 z-10">
         <input
           type="text"
@@ -204,10 +185,12 @@ function App() {
         </button>
       </div>
 
+      {/* Error display */}
       {error && (
         <p className="text-red-400 text-lg font-starwars mt-4">{error}</p>
       )}
 
+      {/* Article section */}
       {article && (
         <div className="bg-black bg-opacity-70 p-6 mt-6 rounded-lg border-2 border-yellow-500 shadow-lg max-w-3xl text-white space-y-4 z-10">
           <h2 className="text-3xl font-starwars border-b border-yellow-400 pb-2">
@@ -217,6 +200,7 @@ function App() {
           <p className="text-yellow-300 font-starwars text-xl mt-4">Full Article:</p>
           <p className="text-md font-starwars whitespace-pre-line">{article.content}</p>
 
+          {/* Play/Stop controls */}
           <div className="flex space-x-4 mt-6">
             <button
               onClick={handlePlay}
@@ -240,4 +224,3 @@ function App() {
 }
 
 export default App;
-
