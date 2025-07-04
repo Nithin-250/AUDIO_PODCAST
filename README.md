@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+Welcome to *Talkify*, a Star Wars-themed podcast generator that transforms any article URL into an engaging audio experience — complete with text extraction, dynamic voice narration, and an immersive UI inspired by the Star Wars universe.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🚀 What is Talkify?
 
-## Available Scripts
+Talkify is a web application where users paste a URL to an article, and the app fetches the article content, summarizes it, and generates a podcast-style audio narration using text-to-speech. It brings the fun of the Star Wars aesthetic to learning and content consumption.
 
-In the project directory, you can run:
+## 🛠 Tech Stack
 
-### `npm start`
+- *Frontend:* React.js with Tailwind CSS
+- *Animation:* Framer Motion & CSS animations
+- *Text-to-Speech:* Web Speech API
+- *Backend:* Node.js (Express) with article extraction (hosted separately)
+- *Deployment:* Vercel (Frontend), Render.com (Backend)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## 🎯 Track Chosen
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+*Full Stack* — This project leverages both frontend and backend development to deliver a complete, interactive web application.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛑 Problem Being Solved
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In an era of information overload, people struggle to keep up with long articles. Talkify solves this by letting anyone generate a Star Wars-themed podcast from any article URL, enabling learning on the go in an engaging, entertaining way.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 💰 Business Model (Optional)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+While Talkify is currently a free, open-source project, its future business model could include:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- *Freemium model:* Basic article-to-podcast generation is free; premium tier offers features like advanced voices, branded podcasts, or longer article support.
+- *API licensing:* Offer our article extraction + text-to-speech API to content creators or edtech platforms.
+- *Ads or sponsorships:* Integrate Star Wars-themed sponsorships inside the generated podcasts.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## ✅ Bounties/Challenges Completed
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1) The website is created in a Dark mode(sith) in accordance to challenge 1
+2)A star war easter egg is added in the bottom right of the website which redirects to information about a character from starwars called darth vader
+3)In sith-fortress teammates reimaged scene between Obi-wan and Anakin from the starwars series(Darth Abishek and Darth Nithin resp)
+4)3D text effect of Title was added. Up and down dynamic movement of title was added in the website
 
-### Code Splitting
+## ✅DEPLOYED PROJECT LINK
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://rman-6-ey4r.vercel.app/
