@@ -1,0 +1,37 @@
+/* Tailwind layers (keep these at the top) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.cdnfonts.com/css/star-jedi');
+
+.font-starwars {
+  font-family: 'Star Jedi', sans-serif;
+}
+
+
+
+/* 3D crawl animation */
+@keyframes crawl3d {
+  0% {
+    transform: perspective(1000px) rotateX(25deg) scale(1);
+  }
+  50% {
+    transform: perspective(1000px) rotateX(25deg) scale(0.8);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(25deg) scale(1);
+  }
+}
+
+.animate-crawl3d {
+  animation: crawl3d 4s ease-in-out infinite;
+  transform-origin: center bottom;
+  transform-style: preserve-3d;
+}
+
+/* Star Wars-like page transition animations */
+.fade-enter {
+  opacity: 0;
+  transform: scale(1.2) rotateX(45deg);
+}
