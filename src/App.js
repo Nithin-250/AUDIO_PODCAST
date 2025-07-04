@@ -158,7 +158,7 @@ function App() {
       </div>
 
       {/* Title */}
-      <h1 className="floating-title text-yellow-400 text-6xl md:text-4xl font-starwars text-center drop-shadow-[2px_2px_0_black] mb-6">
+      <h1 className="floating-title text-yellow-400 text-6xl md:text-6xl font-starwars text-center drop-shadow-[2px_2px_0_black] mb-6">
         Talkify: The Podcast Force Awakens
       </h1>
 
