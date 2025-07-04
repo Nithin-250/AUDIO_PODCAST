@@ -178,8 +178,8 @@ function App() {
         </div>
       </div>
 
-      <h1 className="text-yellow-400 text-6xl md:text-8xl font-starwars text-center animate-crawl3d mb-6 drop-shadow-[2px_2px_0_black] border-black border-4 px-4">
-      Talkify: The Podcast Force Awakens
+      <h1 className="text-yellow-400 text-6xl md:text-8xl font-starwars text-center animate-float-updown mb-6 drop-shadow-[2px_2px_0_black] border-black border-4 px-4">
+        Talkify: The Podcast Force Awakens
       </h1>
       <p className="text-yellow-400 text-2xl md:text-3xl font-starwars text-center drop-shadow-[2px_2px_0_black] mb-12 max-w-2xl">
         Paste a URL below and generate your Star Wars-inspired podcast!
