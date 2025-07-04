@@ -3,31 +3,28 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.cdnfonts.com/css/star-jedi');
+/* Correct Star Jedi font import */
+@import url('https://fonts.bunny.net/css?family=star-jedi');
 
 .font-starwars {
   font-family: 'Star Jedi', sans-serif;
 }
 
-
-
-/* 3D crawl animation */
-@keyframes crawl3d {
+/* Up-down floating animation */
+@keyframes floatUpDown {
   0% {
-    transform: perspective(1000px) rotateX(25deg) scale(1);
+    transform: translateY(0);
   }
   50% {
-    transform: perspective(1000px) rotateX(25deg) scale(0.8);
+    transform: translateY(-20px);
   }
   100% {
-    transform: perspective(1000px) rotateX(25deg) scale(1);
+    transform: translateY(0);
   }
 }
 
-.animate-crawl3d {
-  animation: crawl3d 4s ease-in-out infinite;
-  transform-origin: center bottom;
-  transform-style: preserve-3d;
+.animate-float-updown {
+  animation: floatUpDown 4s ease-in-out infinite;
 }
 
 /* Star Wars-like page transition animations */
