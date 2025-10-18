@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Talkify hero artwork">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2e026d"/>
+      <stop offset="40%" stop-color="#a21caf"/>
+      <stop offset="75%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#fde68a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="30"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g1)"/>
+  <g filter="url(#blur)">
+    <circle cx="980" cy="140" r="140" fill="url(#glow)"/>
+    <circle cx="260" cy="760" r="180" fill="url(#glow)"/>
+    <circle cx="100" cy="200" r="120" fill="url(#glow)"/>
+  </g>
+  <g transform="translate(120,220)" fill="#fff">
+    <text x="0" y="0" font-family="'Segoe UI', Roboto, Arial, sans-serif" font-size="72" font-weight="700">Your Smartest,</text>
+    <text x="0" y="90" font-family="'Segoe UI', Roboto, Arial, sans-serif" font-size="72" font-weight="700">Friendliest Chat</text>
+    <text x="0" y="180" font-family="'Segoe UI', Roboto, Arial, sans-serif" font-size="72" font-weight="700">Companion Is Here</text>
+    <g transform="translate(0,260)">
+      <rect x="0" y="-56" rx="28" ry="28" width="360" height="84" fill="#f472b6"/>
+      <rect x="0" y="-56" rx="28" ry="28" width="360" height="84" fill="url(#glow)"/>
+      <text x="180" y="0" text-anchor="middle" font-family="'Segoe UI', Roboto, Arial, sans-serif" font-size="42" font-weight="700" fill="#fff">talkify.ai</text>
+    </g>
+  </g>
+</svg>

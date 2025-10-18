@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Studies themed background">
+  <defs>
+    <linearGradient id="g" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e0f2fe"/>
+      <stop offset="50%" stop-color="#ede9fe"/>
+      <stop offset="100%" stop-color="#fff7ed"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="40"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g)"/>
+  <g filter="url(#blur)">
+    <circle cx="350" cy="220" r="180" fill="url(#spot)"/>
+    <circle cx="1200" cy="360" r="160" fill="url(#spot)"/>
+    <circle cx="600" cy="720" r="200" fill="url(#spot)"/>
+  </g>
+  <!-- simple line icons: book, pencil, graduation cap -->
+  <g fill="none" stroke="#94a3b8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+    <!-- book -->
+    <path d="M200 620 h220 a30 30 0 0 1 30 30 v90 h-220 a30 30 0 0 1 -30 -30 v-90 z"/>
+    <path d="M450 620 h220 a30 30 0 0 1 30 30 v90 h-220 a30 30 0 0 1 -30 -30 v-90 z"/>
+    <line x1="420" y1="620" x2="420" y2="770"/>
+    <!-- pencil -->
+    <path d="M1100 650 l160 -160 l60 60 l-160 160 l-80 20 z"/>
+    <path d="M1320 470 l40 -40 l60 60 l-40 40 z"/>
+    <!-- graduation cap -->
+    <path d="M780 260 l220 80 l-220 80 l-220 -80 z"/>
+    <path d="M560 340 v100 l220 80 l220 -80 v-100"/>
+  </g>
+</svg>

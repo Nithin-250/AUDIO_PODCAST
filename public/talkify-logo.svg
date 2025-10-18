@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 140" role="img" aria-label="Talkify logo">
+  <defs>
+    <linearGradient id="bubble" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+  </defs>
+  <!-- left chat bubble -->
+  <rect x="12" y="22" rx="16" ry="16" width="120" height="84" fill="#4b5563"/>
+  <path d="M80 110 L62 92 H132" fill="#4b5563"/>
+  <!-- right chat bubble with gradient -->
+  <rect x="72" y="38" rx="16" ry="16" width="120" height="84" fill="url(#bubble)"/>
+  <path d="M160 138 L142 120 H212" fill="url(#bubble)"/>
+  <!-- message lines -->
+  <rect x="98" y="58" width="70" height="10" rx="5" fill="#ffffff" opacity="0.9"/>
+  <rect x="98" y="76" width="54" height="10" rx="5" fill="#ffffff" opacity="0.85"/>
+  <!-- wordmark -->
+  <g transform="translate(210,40)" fill="#4b5563">
+    <path d="M0 60 V10 h18 v34q0 8 8 8h6v16h-8q-24 0-24-26z"/>
+    <circle cx="44" cy="18" r="8"/>
+    <path d="M36 34 h16 v46 H36z"/>
+    <path d="M66 80 V34 h18v8q8-10 20-10 12 0 18 8 10-8 22-8 26 0 26 28v20h-18V58q0-12-12-12-8 0-14 6 2 6 2 12v16h-18V58q0-12-12-12-8 0-14 6v28z"/>
+  </g>
+</svg>

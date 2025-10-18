@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" role="img" aria-label="TALKIFY – Text to Speech">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0b3b5f"/>
+    </linearGradient>
+    <linearGradient id="stroke" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="50%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="220" rx="18" fill="url(#bg)"/>
+  <g transform="translate(48,50)">
+    <text x="0" y="80" font-family="'Segoe UI', Roboto, Arial, sans-serif" font-weight="800" font-size="96" fill="#ffffff" letter-spacing="6">TALKIFY</text>
+    <text x="4" y="130" font-family="'Segoe UI', Roboto, Arial, sans-serif" font-weight="600" font-size="26" fill="#a7b0c0" letter-spacing="6">TEXT TO SPEECH</text>
+  </g>
+  <rect x="10" y="10" width="780" height="200" rx="16" fill="none" stroke="url(#stroke)" stroke-width="2" opacity="0.35"/>
+</svg>
