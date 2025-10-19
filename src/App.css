@@ -1,0 +1,63 @@
+/* Subtle card entrance + hover interactions */
+.card-appear { animation: fadeUp 480ms ease-out both; }
+.card-appear-2 { animation: fadeUp 520ms ease-out both; animation-delay: 60ms; }
+.card-appear-3 { animation: fadeUp 560ms ease-out both; animation-delay: 120ms; }
+.hover-lift { transition: transform 180ms ease, box-shadow 200ms ease, background-color 200ms ease; }
+.hover-lift:hover { transform: translateY(-4px) scale(1.01); }
+.focus-ring { outline: none; box-shadow: 0 0 0 0 rgba(59,130,246,0); transition: box-shadow 180ms ease; }
+.focus-ring:focus-visible { box-shadow: 0 0 0 3px rgba(59,130,246,0.5); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Center modal animations */
+.modal-backdrop { animation: modalFade 180ms ease both; }
+.modal-panel { animation: modalPop 220ms cubic-bezier(.2,.8,.2,1) both; }
+
+@keyframes modalFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes modalPop {
+  from { opacity: 0; transform: translateY(8px) scale(.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.star-wars-font {
+  font-family: 'Star Jedi', sans-serif;
+}
+.floating-title {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+@keyframes floatUpDown {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+
+
+/* Star Wars-like page transition animations */
+.fade-enter {
+  opacity: 0;
+  transform: scale(1.2) rotateX(45deg);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: scale(1) rotateX(0);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
